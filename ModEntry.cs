@@ -1,4 +1,4 @@
-﻿using ContentPatcher;
+using ContentPatcher;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewModdingAPI.Enums;
@@ -12,15 +12,15 @@ namespace ImmersiveGrandpa
     {
         public override void Entry(IModHelper helper)
         {
-			helper.Events.GameLoop.GameLaunched += OnGameLaunch;
+            helper.Events.GameLoop.GameLaunched += OnGameLaunch;
             helper.Events.Specialized.LoadStageChanged += LoadStageChange;
         }
 
-		 private void OnGameLaunch(object sender, GameLaunchedEventArgs e)
-		{
-			var api = this.Helper.ModRegistry.GetApi<IContentPatcherAPI>("Pathoschild.ContentPatcher");
-			
-			api.RegisterToken(this.ModManifest, "SkinTone", () =>
+         private void OnGameLaunch(object sender, GameLaunchedEventArgs e)
+        {
+            var api = this.Helper.ModRegistry.GetApi<IContentPatcherAPI>("Pathoschild.ContentPatcher");
+            
+            api.RegisterToken(this.ModManifest, "SkinTone", () =>
             {
                 /*created save
                 if (CreatedSave == true)
@@ -38,8 +38,8 @@ namespace ImmersiveGrandpa
                 // no save loaded (e.g. on the title screen)
                 return new[] { "vanilla" };
 
-				});
-		}
+                });
+        }
         private void LoadStageChange(object sender, LoadStageChangedEventArgs e)
         {
             if (e.NewStage.Equals(LoadStage.CreatedBasicInfo) || e.NewStage.HasFlag(LoadStage.CreatedBasicInfo))
@@ -52,3 +52,5 @@ namespace ImmersiveGrandpa
         }
     }
 }
+
+
